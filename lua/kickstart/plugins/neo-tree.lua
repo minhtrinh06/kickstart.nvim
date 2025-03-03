@@ -8,6 +8,7 @@ return {
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
     'MunifTanjim/nui.nvim',
+    '3rd/image.nvim',
   },
   cmd = 'Neotree',
   keys = {
@@ -20,6 +21,14 @@ return {
           ['<C-b>'] = 'close_window',
         },
       },
+      filtered_items = {
+        hide_dotfiles = false,
+        visible = true,
+      },
+    },
+    window = {
+      position = 'right',
+      width = 35,
     },
   },
 }
