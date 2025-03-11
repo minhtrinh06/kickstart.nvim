@@ -1,14 +1,14 @@
 return {
-  "karb94/neoscroll.nvim",
+  'karb94/neoscroll.nvim',
   config = function()
     --     require('neoscroll').setup {
     --       mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>',
     --         '<C-y>', '<C-e>', 'zt', 'zz', 'zb' },
     --       stop_eof = false,
     --     }
-    local neoscroll = require("neoscroll")
+    local neoscroll = require 'neoscroll'
 
-    local easing = "sine"
+    local easing = 'sine'
     local zz_time_ms = 100
     local jump_time_ms = 200
 
@@ -28,23 +28,23 @@ return {
       end, defer_time_ms)
     end
 
-    neoscroll.setup({
+    neoscroll.setup {
       post_hook = function(info)
-        if info ~= "center" then
+        if info ~= 'center' then
           return
         end
 
         centering_function()
       end,
-      mappings = { "<C-u>", "<C-d>", "zt", "zz", "zb" },
-      easing = 'sine'
-    })
+      mappings = { '<C-u>', '<C-d>', 'zt', 'zz', 'zb' },
+      easing = 'sine',
+    }
 
     -- local mappings = {}
 
     -- mappings["<C-u>"] = { "scroll", { "-vim.wo.scroll", "true", jump_time_ms, easing, "'center'" } }
     -- mappings["<C-d>"] = { "scroll", { "vim.wo.scroll", "true", jump_time_ms, easing, "'center'" } }
 
-    require("neoscroll.config")
-  end
+    require 'neoscroll.config'
+  end,
 }
