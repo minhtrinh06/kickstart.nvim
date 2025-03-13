@@ -98,6 +98,9 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.diagnostic.config {
+  underline = true,
+}
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -255,6 +258,7 @@ require('lazy').setup({
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>u', group = '[U]ndo tree' },
       },
     },
   },
@@ -488,6 +492,7 @@ require('lazy').setup({
           --
           -- When you move your cursor, the highlights will be cleared (the second autocommand).
           local client = vim.lsp.get_client_by_id(event.data.client_id)
+          ---@diagnostic disable-next-line: param-type-mismatch, missing-parameter
           if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
             local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
@@ -515,6 +520,7 @@ require('lazy').setup({
           -- code, if the language server you are using supports them
           --
           -- This may be unwanted, since they displace some of your code
+          ---@diagnostic disable-next-line: param-type-mismatch, missing-parameter
           if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
             map('<leader>th', function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
@@ -883,20 +889,22 @@ require('lazy').setup({
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
-  require 'kickstart.plugins.alpha-nvim',
-  require 'kickstart.plugins.completions',
-  -- require 'kickstart.plugins.gruvbox',
-  require 'kickstart.plugins.neoscroll',
-  require 'kickstart.plugins.tmux-nav',
-  require 'kickstart.plugins.lualine',
-  require 'kickstart.plugins.comment',
-  require 'kickstart.plugins.typescript-tools',
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.lint',
-  require 'kickstart.plugins.undo',
+
+  -- NOTE: Add new plugins here
+  require 'minh.plugins.alpha-nvim',
+  require 'minh.plugins.completions',
+  require 'minh.plugins.neoscroll',
+  require 'minh.plugins.tmux-nav',
+  require 'minh.plugins.lualine',
+  require 'minh.plugins.comment',
+  require 'minh.plugins.typescript-tools',
+  require 'minh.plugins.undo',
+  require 'minh.plugins.md-preview',
+  -- require 'minh.plugins.gruvbox',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
