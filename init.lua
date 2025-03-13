@@ -76,6 +76,9 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Text wrap
+vim.opt.textwidth = 10
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -258,7 +261,6 @@ require('lazy').setup({
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
-        { '<leader>u', group = '[U]ndo tree' },
       },
     },
   },
@@ -904,6 +906,7 @@ require('lazy').setup({
   require 'minh.plugins.typescript-tools',
   require 'minh.plugins.undo',
   require 'minh.plugins.md-preview',
+  require 'minh.plugins.lazygit',
   -- require 'minh.plugins.gruvbox',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
