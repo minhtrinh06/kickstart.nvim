@@ -549,6 +549,7 @@ require('lazy').setup({
       --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+      -- NOTE: Add LSPs here -- lspa
       local servers = {
         clangd = {},
         gopls = {},
@@ -772,35 +773,36 @@ require('lazy').setup({
     end,
   },
 
-  -- { -- You can easily change to a different colorscheme.
-  --   -- Change the name of the colorscheme plugin below, and then
-  --   -- change the command in the config to whatever the name of that colorscheme is.
-  --   --
-  --   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-  --   'ellisonleao/gruvbox.nvim',
-  --   priority = 1000, -- Make sure to load this before all the other start plugins.
-  --   init = function()
-  --     -- Load the colorscheme here.
-  --     -- Like many other themes, this one has different styles, and you could load
-  --     -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-  --     vim.cmd.colorscheme 'ellisonleao/gruvbox.nvim'
-  --     vim.o.background = 'dark'
-  --
-  --     -- You can configure highlights by doing something like:
-  --     vim.cmd.hi 'Comment gui=none'
-  --   end,
-  --   config = true,
-  --   opts = {
-  --     overrides = {
-  --       ['@function.call.lua'] = { fg = '#fabd2f' },
-  --       ['@function.call.tsx'] = { fg = '#b8bb26' },
-  --       ['@tag'] = { fg = '#b16286' },
-  --       ['@tag.tsx'] = { fg = '#fabd2f' },
-  --       ['@tag.delimiter'] = { fg = '#928374' },
-  --       ['@punctuation.bracket.tsx'] = { fg = '#928374' },
-  --     },
-  --   },
-  -- },
+  { -- You can easily change to a different colorscheme.
+    -- Change the name of the colorscheme plugin below, and then
+    -- change the command in the config to whatever the name of that colorscheme is.
+    --
+    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
+    'ellisonleao/gruvbox.nvim',
+    priority = 1000, -- Make sure to load this before all the other start plugins.
+    config = function()
+      ---@diagnostic disable-next-line: missing-fields
+      require('gruvbox').setup {
+        italic = {
+          comments = false, -- Disable italics in comments
+        },
+        inverse = false,
+        overrides = {
+          ['@function.call.lua'] = { fg = '#fabd2f' },
+          ['@function.call.tsx'] = { fg = '#b8bb26' },
+          ['@tag'] = { fg = '#b16286' },
+          ['@tag.tsx'] = { fg = '#fabd2f' },
+          ['@tag.delimiter'] = { fg = '#928374' },
+          ['@punctuation.bracket.tsx'] = { fg = '#928374' },
+        },
+      }
+
+      -- Load the colorscheme here.
+      -- Like many other themes, this one has different styles, and you could load
+      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+      vim.cmd.colorscheme 'gruvbox'
+    end,
+  },
 
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
@@ -886,7 +888,7 @@ require('lazy').setup({
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
   require 'kickstart.plugins.alpha-nvim',
   require 'kickstart.plugins.completions',
-  require 'kickstart.plugins.gruvbox',
+  -- require 'kickstart.plugins.gruvbox',
   require 'kickstart.plugins.neoscroll',
   require 'kickstart.plugins.tmux-nav',
   require 'kickstart.plugins.lualine',

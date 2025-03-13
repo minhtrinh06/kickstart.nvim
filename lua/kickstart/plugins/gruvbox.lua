@@ -14,5 +14,6 @@ return {
       ['@tag.delimiter'] = { fg = '#928374' },
       ['@punctuation.bracket.tsx'] = { fg = '#928374' },
     },
+    inverse = false,
   },
 }
