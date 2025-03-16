@@ -35,11 +35,11 @@ end)
 -- Enable break indent
 vim.opt.breakindent = true
 
-vim.cmd 'set expandtab'
-vim.cmd 'set tabstop=2'
-vim.cmd 'set softtabstop=2'
-vim.cmd 'set shiftwidth=2'
-vim.cmd 'set conceallevel=2'
+-- vim.cmd 'set expandtab'
+-- vim.cmd 'set tabstop=2'
+-- vim.cmd 'set softtabstop=2'
+-- vim.cmd 'set shiftwidth=2'
+-- vim.cmd 'set conceallevel=2'
 
 -- Save undo history
 vim.opt.undofile = true
@@ -787,7 +787,7 @@ require('lazy').setup({
     -- change the command in the config to whatever the name of that colorscheme is.
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'ellisonleao/gruvbox.nvim',
+    'minhtrinh06/gruvbox.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     config = function()
       ---@diagnostic disable-next-line: missing-fields
@@ -795,7 +795,10 @@ require('lazy').setup({
         italic = {
           comments = false, -- Disable italics in comments
         },
-        inverse = false,
+        -- inverse = false,
+        inverse = {
+          statusline = false,
+        },
         overrides = {
           ['@function.call.lua'] = { fg = '#fabd2f' },
           ['@function.call.tsx'] = { fg = '#b8bb26' },
@@ -908,6 +911,8 @@ require('lazy').setup({
   require 'minh.plugins.undo',
   require 'minh.plugins.md-preview',
   require 'minh.plugins.lazygit',
+  require 'minh.plugins.harpoon',
+
   -- require 'minh.plugins.gruvbox',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
