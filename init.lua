@@ -35,11 +35,11 @@ end)
 -- Enable break indent
 vim.opt.breakindent = true
 
--- vim.cmd 'set expandtab'
--- vim.cmd 'set tabstop=2'
--- vim.cmd 'set softtabstop=2'
--- vim.cmd 'set shiftwidth=2'
--- vim.cmd 'set conceallevel=2'
+vim.cmd 'set expandtab'
+vim.cmd 'set tabstop=2'
+vim.cmd 'set softtabstop=2'
+vim.cmd 'set shiftwidth=2'
+-- vim.cmd 'set conceallevel=7'
 
 -- Save undo history
 vim.opt.undofile = true
@@ -75,9 +75,6 @@ vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
-
--- Text wrap
-vim.opt.textwidth = 10
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -561,8 +558,8 @@ require('lazy').setup({
       -- NOTE: Add LSPs here -- lspa
       local servers = {
         clangd = {},
-        gopls = {},
-        pyright = {},
+        -- gopls = {},
+        -- pyright = {},
         rust_analyzer = {},
         nextls = {},
         tailwindcss = {},
@@ -570,7 +567,8 @@ require('lazy').setup({
         eslint = {},
         html = {},
         sqls = {},
-        yamlls = {},
+        terraformls = {},
+        -- yamlls = {},
 
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         lua_ls = {
@@ -883,15 +881,6 @@ require('lazy').setup({
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
 
-  -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
-  -- init.lua. If you want these files, they are in the repository, so you can just download them and
-  -- place them in the correct locations.
-
-  -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
-  --
-  --  Here are some example plugins that I've included in the Kickstart repository.
-  --  Uncomment any of the lines below to enable them (you will need to restart nvim).
-  --
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
@@ -912,8 +901,6 @@ require('lazy').setup({
   require 'minh.plugins.md-preview',
   require 'minh.plugins.lazygit',
   require 'minh.plugins.harpoon',
-
-  -- require 'minh.plugins.gruvbox',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
