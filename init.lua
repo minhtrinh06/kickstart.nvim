@@ -259,6 +259,8 @@ require('lazy').setup({
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
         { '<leader>l', group = '[L]azy' },
+        { '<leader>a', group = 'h[A]rpoon', mode = { 'n', 'v' } },
+        { '<leader>m', group = '[M]arks', mode = { 'n', 'v' } },
       },
     },
   },
@@ -557,18 +559,17 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       -- NOTE: Add LSPs here -- lspa
       local servers = {
-        clangd = {},
         -- gopls = {},
         -- pyright = {},
+        -- yamlls = {},
+        clangd = {},
         rust_analyzer = {},
         nextls = {},
         tailwindcss = {},
         cssls = {},
         eslint = {},
         html = {},
-        sqls = {},
         terraformls = {},
-        -- yamlls = {},
 
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         lua_ls = {
@@ -833,7 +834,6 @@ require('lazy').setup({
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
-      -- TODO: Figure out why this isn't working
       require('mini.surround').setup()
 
       -- Simple and easy statusline.
@@ -901,6 +901,8 @@ require('lazy').setup({
   require 'minh.plugins.md-preview',
   require 'minh.plugins.lazygit',
   require 'minh.plugins.harpoon',
+  require 'minh.plugins.ts-comments',
+  require 'minh.plugins.marks',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
