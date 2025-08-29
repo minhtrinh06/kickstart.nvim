@@ -560,7 +560,7 @@ require('lazy').setup({
       -- NOTE: Add LSPs here -- lspa
       local servers = {
         -- gopls = {},
-        -- pyright = {},
+        pyright = {},
         -- yamlls = {},
         clangd = {},
         rust_analyzer = {},
@@ -806,6 +806,7 @@ require('lazy').setup({
           ['@tag.delimiter'] = { fg = '#928374' },
           ['@punctuation.bracket.tsx'] = { fg = '#928374' },
         },
+        transparent_mode = true,
       }
 
       -- Load the colorscheme here.
@@ -903,6 +904,7 @@ require('lazy').setup({
   require 'minh.plugins.harpoon',
   require 'minh.plugins.ts-comments',
   require 'minh.plugins.marks',
+  require 'minh.plugins.vim-visual-multi',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
